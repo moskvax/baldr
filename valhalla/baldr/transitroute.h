@@ -14,8 +14,7 @@ namespace baldr {
 class TransitRoute {
  public:
   // Constructor with arguments
-  TransitRoute(const uint32_t routeid, const uint32_t agencyid,
-               const char* tl_routeid, const uint32_t short_name_offset,
+  TransitRoute(const uint32_t routeid, const char* tl_routeid,
                const uint32_t long_name_offset, const uint32_t desc_offset);
 
   /**
@@ -23,13 +22,6 @@ class TransitRoute {
    * @return  Returns the internal stop Id.
    */
   uint32_t routeid() const;
-
-  /**
-   * Get the internal agency Id for this route.
-   * @return  Returns the internal agency Id.
-   */
-  uint32_t agencyid() const;
-
   /**
    * Get the TransitLand one stop Id for this route.
    * @return  Returns the TransitLand one-stop Id.
@@ -37,14 +29,8 @@ class TransitRoute {
   const char* tl_routeid() const;
 
   /**
-   * Get the text/name offset for the short route name.
-   * @return  Returns the short name offset in the text/name list.
-   */
-  uint32_t short_name_offset() const;
-
-  /**
    * Get the text/name offset for the long route name.
-   * @return  Returns the short name offset in the text/name list.
+   * @return  Returns the long name offset in the text/name list.
    */
   uint32_t long_name_offset() const;
 
@@ -65,14 +51,8 @@ class TransitRoute {
   // Internal route Id. Used to lookup/index routes.
   uint32_t routeid_;
 
-  // Internal agency Id this route belongs to.
-  uint32_t agencyid_;
-
   // TransitLand one stop Id for this route.
   char tl_routeid_[kOneStopIdSize];
-
-  // Short route name offset in the text/name list.
-  uint32_t short_name_offset_;
 
   // Long route name offset in the text/name list.
   uint32_t long_name_offset_;

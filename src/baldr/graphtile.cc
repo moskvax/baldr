@@ -481,9 +481,9 @@ const TransitDeparture* GraphTile::GetNextDeparture(const uint32_t lineid,
   return nullptr;
 }
 
-// Get the departure given the line Id and tripid
+// Get the departure given the line Id and routeid
 const TransitDeparture* GraphTile::GetTransitDeparture(const uint32_t lineid,
-                     const uint32_t tripid) const {
+                     const uint32_t routeid) const {
   uint32_t count = header_->departurecount();
   if (count == 0) {
     return nullptr;
@@ -510,7 +510,7 @@ const TransitDeparture* GraphTile::GetTransitDeparture(const uint32_t lineid,
 
   if (!found) {
     LOG_INFO("No departures found for lineid = " + std::to_string(lineid) +
-             " and tripid = " + std::to_string(tripid));
+             " and tripid = " + std::to_string(routeid));
     return nullptr;
   }
 
@@ -518,22 +518,22 @@ const TransitDeparture* GraphTile::GetTransitDeparture(const uint32_t lineid,
     // Back up while prior is equal (or at the beginning)
     while (mid > 0 && departures_[mid-1].lineid() == lineid) {
 
-      if (departures_[mid].tripid() == tripid)
+      if (departures_[mid].routeid() == routeid)
         return &departures_[mid];
 
       mid--;
     }
 
-    while (departures_[mid].tripid() != tripid && mid < count) {
+    while (departures_[mid].routeid() != routeid && mid < count) {
       mid++;
     }
 
-    if (departures_[mid].tripid() == tripid)
+    if (departures_[mid].routeid() == routeid)
       return &departures_[mid];
   }
 
   LOG_INFO("No departures found for lineid = " + std::to_string(lineid) +
-           " and tripid = " + std::to_string(tripid));
+           " and routeid = " + std::to_string(routeid));
   return nullptr;
 }
 

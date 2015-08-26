@@ -14,7 +14,7 @@ namespace baldr {
 class TransitDeparture {
  public:
   // Construct with arguments
-  TransitDeparture(const uint32_t lineid, const uint32_t tripid,
+  TransitDeparture(const uint32_t lineid,
                    const uint32_t routeid, const uint32_t blockid,
                    const uint32_t headsign_offset,
                    const uint32_t departure_time,
@@ -29,12 +29,6 @@ class TransitDeparture {
    * @return  Returns the departure line Id.
    */
   uint32_t lineid() const;
-
-  /**
-   * Get the internal trip Id for this departure.
-   * @return  Returns the internal trip Id.
-   */
-  uint32_t tripid() const;
 
   /**
    * Get the route Id (internal) for this departure.
@@ -104,9 +98,6 @@ class TransitDeparture {
   // Line Id - lookup departures by unique line Id (which indicates a unique
   // departure / arrival stop pair.
   uint32_t lineid_;
-
-  // TripId (internal).
-  uint32_t tripid_;
 
   // Route Id (internal).
   uint32_t routeid_;
