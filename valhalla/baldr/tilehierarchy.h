@@ -26,6 +26,8 @@ class TileHierarchy {
    */
   TileHierarchy(const boost::property_tree::ptree& pt);
 
+  TileHierarchy();
+
   /**
    * Encapsulates a few types together to define a level in the hierarchy
    */
@@ -72,7 +74,7 @@ class TileHierarchy {
   GraphId GetGraphId(const midgard::PointLL& pointll, const uint8_t level) const;
 
  private:
-  explicit TileHierarchy();
+//  explicit TileHierarchy();
 
   // a place to keep each level of the hierarchy
   std::map<uint8_t, TileLevel> levels_;

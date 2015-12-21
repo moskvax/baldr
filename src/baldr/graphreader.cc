@@ -27,6 +27,8 @@ GraphReader::GraphReader(const boost::property_tree::ptree& pt):tile_hierarchy_(
   cache_.reserve(max_cache_size_/AVERAGE_TILE_SIZE);
 }
 
+GraphReader::GraphReader() {}
+
 // Method to test if tile exists
 bool GraphReader::DoesTileExist(const GraphId& graphid) const {
   return DoesTileExist(tile_hierarchy_, graphid);

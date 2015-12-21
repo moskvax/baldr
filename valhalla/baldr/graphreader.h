@@ -24,6 +24,8 @@ class GraphReader {
    */
   GraphReader(const boost::property_tree::ptree& pt);
 
+  GraphReader();
+
   /**
    * Test if tile exists
    * @param  graphid  GraphId of the tile to test (tile id and level).
