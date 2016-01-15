@@ -1,11 +1,12 @@
-#include "valhalla/baldr/tilehierarchy.h"
+#include "baldr/tilehierarchy.h"
+#include "baldr/graphtileheader.h"
 
 using namespace valhalla::midgard;
 
 namespace valhalla {
 namespace baldr {
 TileHierarchy::TileLevel::TileLevel(const boost::property_tree::ptree& pt):
-  tiles({{-180, -90}, {180, 90}}, pt.get<float>("size"), pt.get<unsigned short>("subdivisions", 1)){
+  tiles({{-180, -90}, {180, 90}}, pt.get<float>("size"), kGridDim){
   level = pt.get<uint8_t>("level");
   name = pt.get<std::string>("name");
   //if not provided default to everything
